@@ -1679,3 +1679,183 @@ button.recording {
         min-height: 150px;
     }
 }
+/* Мобильные стили для страницы избранного */
+@media (max-width: 768px) {
+    .favorites-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .filters-section {
+        width: 100%;
+        position: static;
+        margin-bottom: 20px;
+    }
+
+    .filters {
+        padding: 15px;
+    }
+
+    .theme-filter {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .theme-filter li {
+        flex: 0 0 auto;
+    }
+
+    .theme-filter button {
+        white-space: nowrap;
+        padding: 8px 12px;
+        border-radius: 20px;
+        border: 1px solid #ddd;
+    }
+
+    .theme-filter button.active {
+        background-color: var(--primary);
+        color: white;
+        border-color: var(--primary);
+    }
+
+    .favorites-section {
+        width: 100%;
+    }
+
+    .favorites-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .favorites-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .favorite-item {
+        padding: 15px;
+    }
+
+    .favorite-title {
+        font-size: 1.3rem;
+    }
+
+    .favorite-meta {
+        flex-wrap: wrap;
+    }
+
+    .favorite-actions {
+        justify-content: flex-start;
+    }
+
+    .favorite-actions button {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .favorite-item {
+        padding: 12px;
+    }
+
+    .favorite-title {
+        font-size: 1.2rem;
+    }
+
+    .favorite-translation {
+        font-size: 1rem;
+    }
+
+    .favorite-description {
+        font-size: 0.9rem;
+    }
+
+    .word-theme-badge {
+        font-size: 0.7rem;
+    }
+}
+
+/* Дополнительные мобильные стили */
+.mobile-filter-toggle {
+    display: none;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .mobile-filter-toggle {
+        display: block;
+    }
+
+    .filters {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .filters.active {
+        display: block;
+        animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+}
+
+/* Улучшаем touch-опыт */
+button, a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Оптимизация для iOS */
+@supports (-webkit-touch-callout: none) {
+    body {
+        padding-bottom: constant(safe-area-inset-bottom);
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+.favorites-container {
+    display: flex;
+    gap: 20px; /* Уменьшаем расстояние между фильтрами и контентом */
+    align-items: flex-start;
+}
+
+.favorites-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px; /* Уменьшаем отступ снизу */
+}
+
+.filters-section {
+    flex: 0 0 250px;
+    position: sticky;
+    top: 20px;
+}
+
+.favorites-section {
+    flex: 1;
+    margin-top: 0; /* Убираем лишний отступ сверху */
+}
+@media (max-width: 768px) {
+    .favorites-container {
+        flex-direction: column;
+        gap: 1px; /* Еще меньше расстояние на мобильных */
+    }
+
+    .favorites-header {
+        margin-bottom: 8px;
+    }
+}
