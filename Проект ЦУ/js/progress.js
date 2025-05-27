@@ -32,7 +32,7 @@ function getLearnedWords() {
 
 function getAllWordsCount() {
     // В реальном приложении нужно загружать данные из wordsData
-    return 1034; // Примерное общее количество слов
+    return 1998; // Примерное общее количество слов
 }
 
 function getCompletedQuizzes() {
