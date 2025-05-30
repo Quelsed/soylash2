@@ -115,4 +115,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         }
     });
+
+    searchInput.addEventListener('input',()=>{
+        const query = searchInput.value.trim();
+        if (query) {
+            const results = searchWords(query);
+            displaySearchResults(results);
+        }
+    });
 });
