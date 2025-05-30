@@ -2361,3 +2361,16 @@ button, a {
         font-size: 1.2rem;
     }
 }
+.logo {
+    width: 30px;
+    height: 37px;
+    margin-right: 3px;
+}
+.header_logo {
+    display: flex;
+    align-items: center;
+}
+.header_logo h1{
+    color: #044FA2;
+    /*font-weight: 300;*/
+}
