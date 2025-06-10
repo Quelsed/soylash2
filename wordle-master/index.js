@@ -3917,18 +3917,24 @@ dict.addEventListener('click', () => {
     popupBgDict.classList.add('active');
     popupDict.classList.add('active');
     generateVocabulary(localStorage.getItem('words').split('$'));
-    dictContainer.querySelectorAll('div').forEach((element) => {
-        console.log(element.innerHTML);
-        element.addEventListener('click', () => {
-            let words = localStorage.getItem('words').split("$");
-            const index = words.indexOf(element.querySelector('.vocabulary_word').innerHTML);
-            if(index > - 1){
-                words.splice(index, 1);
-            }
-            localStorage.setItem('words', words.join("$"));
-            generateVocabulary(words);
+    const updateWordDeletion = () => {
+        dictContainer.querySelectorAll('div').forEach((element) => {
+            element.addEventListener('click', () => {
+                let words = localStorage.getItem('words').split("$").filter(w => w.trim() !== "");
+                const wordToRemove = element.querySelector('.vocabulary_word').innerHTML;
+                const index = words.findIndex(w => w.includes(wordToRemove));
+                
+                if(index > -1){
+                    words.splice(index, 1);
+                    localStorage.setItem('words', words.join("$"));
+                    generateVocabulary(words);
+                    updateWordDeletion();
+                }
+            });
         });
-    });
+    };
+    
+    updateWordDeletion();
 });
 document.getElementById("close-my-modal-btn").addEventListener("click", function() {
   document.getElementById("my-modal").classList.remove("open")
